@@ -1,59 +1,30 @@
-# Lueur de l’Âtre — Website V3 Premium
+# Lueur de l’Âtre — V8 Production
 
-Open `index.html` in a browser to preview the site.
+Deze versie is voorbereid op een echte website met Supabase.
 
-## Included
-- Luxury French restaurant visual direction
-- LDA monogram treatment
-- Real Pexels concept photography
-- Animated ember/fire details
-- Scroll reveal animations
-- Responsive mobile navigation
-- Luxury menu cards, vegetarian option and allergen section
-- Reservation form placeholder
+## Wat werkt
+- Publieke website leest menu, openingsuren, foto's en contactgegevens uit Supabase.
+- Eigenaar logt in via Supabase Auth.
+- Alleen `admin.lueurdelatre@gmail.com` mag CMS-gegevens wijzigen via RLS.
+- Menu, prijzen, beschrijvingen, vegetarisch, allergenen en publicatie worden beheerd vanuit Owner Dashboard.
+- Openingsuren en uitzonderlijke sluitingen worden beheerd vanuit Owner Dashboard.
+- Foto's worden geüpload naar Supabase Storage.
+- Reservatieaanvragen worden rechtstreeks opgeslagen in `reservations`.
+- Status van reservaties kan door de eigenaar worden gewijzigd.
+- Publieke website valt terug op demo-inhoud als Supabase tijdelijk niet bereikbaar is.
 
-## Important
-The restaurant address, telephone, opening hours and final menu prices are intentionally placeholders until the real business details are known.
+## Eenmalige Supabase stap
+1. Open Supabase → SQL Editor.
+2. Open `supabase-production.sql` uit deze zip.
+3. Run het volledige bestand.
+4. Controleer in Authentication → Users dat `admin.lueurdelatre@gmail.com` bestaat.
+5. Gebruik het wachtwoord van dat account om in te loggen via `/admin/`.
 
-The photography is concept imagery from Pexels. Replace it with your own professional restaurant photography when Lueur de l’Âtre opens.
+## Belangrijk
+`config.js` bevat alleen de browser-veilige publishable key. Zet NOOIT een `sb_secret_...` of service-role key in de website.
 
+## Website publiceren
+Alle bestanden kunnen op een statische host zoals GitHub Pages, Netlify of Vercel worden gezet. De map `admin/` geeft de eigenaar een nette `/admin/` URL.
 
-## V4 WOW entrance
-De homepage opent met een cinematografische intro voor Lueur de l’Âtre:
-- LDA-monogram verschijnt vanuit een warme vuur-gloed
-- elegante licht- en emberanimaties
-- slogan en naam verschijnen stap voor stap
-- knop “Entrer dans la maison”
-- intro wordt na één bezoek per browsersessie onthouden
-- `prefers-reduced-motion` wordt gerespecteerd
-
-
-## V6 — Live booking ready
-The reservation UI is designed to accept a real booking provider/widget. The current demo safely falls back to a prepared email request because a provider account and restaurant-specific booking ID are required for genuine real-time availability. The UI includes date, party size, time-slot selection, guest details, dietary preferences and special requests.
-
-
-# V7 Owner CMS
-
-V7 adds `admin.html` + `admin.css` + `admin.js` and a production-oriented `supabase.sql`.
-
-## Owner features
-- Owner login screen
-- Dashboard overview
-- Menu and prices
-- Opening hours
-- Special closures
-- Photo gallery upload UI
-- Reservation management
-- Contact details
-- Supabase configuration screen
-
-## Important security note
-The included login is a local demonstration only. Do NOT use a client-side password as production authentication. For production, create the owner account in Supabase Auth and connect the UI to Supabase using the publishable key. Supabase Auth provides JWT-based authentication and integrates with Row Level Security; Storage also supports RLS policies. Never expose a service/secret key in the browser.
-
-## Production setup
-1. Create a Supabase project.
-2. Create your owner account in Authentication.
-3. Run `supabase.sql` in the SQL Editor.
-4. Copy `config.example.js` to `config.js` and add your project URL + publishable key.
-5. Connect `admin.js` to `@supabase/supabase-js` for Auth/CRUD/Storage.
-6. Replace the demo localStorage data with database calls.
+## Domein
+Koppel later `lueurdelatre.be` aan de gekozen host. Supabase blijft de backend voor database, authenticatie en foto's.

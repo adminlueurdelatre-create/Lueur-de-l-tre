@@ -21,7 +21,7 @@
       <label>Mot de passe<input id="loginPassword" type="password" placeholder="••••••••" required></label>
       <button type="submit">Se connecter <span>→</span></button>
     </form>
-    <small id="loginHint">Mode démonstration activé — configurez Supabase pour une vraie authentification.</small>
+    <small id="loginHint">Connexion sécurisée via Supabase Auth.</small>
   </div>
 </div>
 
@@ -69,7 +69,7 @@
 
     <section id="page-menu" class="page">
       <div class="page-intro"><div><span class="eyebrow">CONTENU</span><h1>Menu & <em>prix</em></h1><p>Modifiez les plats, descriptions, prix et allergènes visibles sur votre site.</p></div><button class="gold" id="addDish">+ Ajouter un plat</button></div>
-      <div class="filter-row"><button class="filter active">Tous</button><button class="filter">Entrées</button><button class="filter">Plats</button><button class="filter">Desserts</button><button class="filter">Végétarien</button></div>
+      <div class="filter-row"><span class="filter active">Alles</span><small>Wijzigingen worden rechtstreeks in Supabase opgeslagen en verschijnen daarna op de publieke website.</small></div>
       <div class="menu-editor" id="menuEditor"></div>
     </section>
 
@@ -106,11 +106,13 @@
       <div class="page-intro"><div><span class="eyebrow">SÉCURITÉ</span><h1>Paramètres <em>propriétaire</em></h1><p>Préparez la connexion sécurisée et les préférences du site.</p></div></div>
       <div class="settings-grid">
         <div class="panel"><h3>Compte propriétaire</h3><p>Pour la production, utilisez une authentification Supabase avec votre propre adresse. Ne mettez jamais un mot de passe dans les fichiers du site.</p><div class="security-line"><span>Authentification</span><strong>Supabase Auth</strong></div><div class="security-line"><span>Base de données</span><strong>PostgreSQL</strong></div><div class="security-line"><span>Photos</span><strong>Supabase Storage</strong></div></div>
-        <div class="panel"><h3>Connexion</h3><label>Supabase URL<input id="supabaseUrl" placeholder="https://votre-projet.supabase.co"></label><label>Publishable key<input id="supabaseKey" placeholder="sb_publishable_..."></label><button class="gold" id="saveConfig">Enregistrer la configuration</button><small>Ces valeurs peuvent être renseignées plus tard. La clé secrète/service key ne doit jamais être placée ici.</small></div>
+        <div class="panel"><h3>Connexion technique</h3><div class="security-line"><span>Supabase</span><strong id="connectionState">Connexion…</strong></div><div class="security-line"><span>URL projet</span><strong id="projectUrlLabel">—</strong></div><p>La connexion est déjà intégrée dans cette version. La clé publishable peut être utilisée dans le navigateur. Ne partagez jamais une clé <code>sb_secret_…</code> ou service-role.</p><button class="outline" id="refreshData">Actualiser les données</button></div>
       </div>
     </section>
   </main>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
 <script src="admin.js"></script>
 </body>
 </html>
