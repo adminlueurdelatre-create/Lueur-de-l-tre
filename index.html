@@ -1,118 +1,195 @@
 <!doctype html>
-<html lang="nl">
+<html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lueur de l’Âtre — Owner Dashboard</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../admin.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Lueur de l’Âtre — gastronomie, chaleur et instants précieux.">
+<title>Lueur de l’Âtre — Là où la chaleur devient souvenir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="loginView" class="login-view">
-  <div class="login-card">
-    <div class="login-logo">LDA</div>
-    <span class="eyebrow">OWNER ACCESS</span>
-    <h1>Lueur de l’Âtre</h1>
-    <p>Votre espace privé pour gérer le restaurant.</p>
-    <form id="loginForm">
-      <label>E-mail<input id="loginEmail" type="email" placeholder="votre e-mail" required></label>
-      <label>Mot de passe<input id="loginPassword" type="password" placeholder="••••••••" required></label>
-      <button type="submit">Se connecter <span>→</span></button>
-    </form>
-    <small id="loginHint">Connexion sécurisée via Supabase Auth.</small>
+<div class="cinematic-intro" id="cinematicIntro" aria-label="Introduction Lueur de l’Âtre">
+  <div class="intro-fire-glow"></div>
+  <div class="intro-embers" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
   </div>
+  <div class="intro-ring"></div>
+  <div class="intro-content">
+    <div class="intro-overline">Une maison · Une lumière · Un souvenir</div>
+    <div class="intro-lda">LDA</div>
+    <div class="intro-line"></div>
+    <div class="intro-name">Lueur de <em>l’Âtre</em></div>
+    <div class="intro-motto">Là où la chaleur devient souvenir.</div>
+    <button class="intro-enter" id="introEnter">Entrer dans la maison <span>→</span></button>
+  </div>
+  <div class="intro-skip" id="introSkip">Entrer</div>
 </div>
 
-<div id="appView" class="app" hidden>
-  <aside class="sidebar">
-    <div class="brand"><span>LDA</span><small>OWNER</small></div>
-    <nav>
-      <button data-page="overview" class="active">⌂ <span>Vue d’ensemble</span></button>
-      <button data-page="menu">☷ <span>Menu & prix</span></button>
-      <button data-page="hours">◷ <span>Ouvertures</span></button>
-      <button data-page="photos">▧ <span>Photos</span></button>
-      <button data-page="bookings">◌ <span>Réservations</span><b id="bookingBadge">3</b></button>
-      <button data-page="contact">◇ <span>Contact</span></button>
-      <button data-page="settings">⚙ <span>Paramètres</span></button>
-    </nav>
-    <button id="logout" class="logout">Déconnexion</button>
-  </aside>
+<div class="cursor-glow" aria-hidden="true"></div>
+<header class="site-header" id="top">
+<a class="brand" href="#accueil" aria-label="Lueur de l’Âtre"><span class="monogram">LDA</span><span class="brand-name">Lueur de l’Âtre</span></a>
+<button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+<nav class="nav"><a href="#histoire">Notre histoire</a><a href="#cuisine">La cuisine</a><a href="#menu">Le menu</a><a href="#experience">L’expérience</a><a href="#galerie">Galerie</a><a class="nav-cta" href="#reserveren">Réserver</a></nav>
+</header>
+<main>
+<section class="hero" id="accueil">
+<div class="hero-photo"></div><div class="hero-vignette"></div><div class="embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="hero-content reveal"><div class="eyebrow">Gastronomie · Chaleur · Mémoire</div><div class="hero-monogram">LDA</div><h1>Lueur de<br><em>l’Âtre</em></h1><p class="hero-slogan">Là où la chaleur devient souvenir.</p><p class="hero-sub">Le goût des instants précieux.</p><div class="hero-actions"><a class="button button-gold" href="#menu">Découvrir le menu</a><a class="button button-outline" href="#histoire">Entrer dans l’univers</a></div></div>
+<div class="scroll">↓ &nbsp; Descendre</div>
+</section>
+<section class="marquee" aria-label="Signature"><div>LE GOÛT DES INSTANTS PRÉCIEUX&nbsp;&nbsp; · &nbsp;&nbsp; LÀ OÙ LA CHALEUR DEVIENT SOUVENIR&nbsp;&nbsp; · &nbsp;&nbsp; LE GOÛT DES INSTANTS PRÉCIEUX&nbsp;&nbsp; · &nbsp;&nbsp;</div></section>
+<section class="intro section reveal"><div class="section-label">01 · L’esprit</div><div class="intro-grid"><div><h2>Le feu est le cœur.<br>La table est le <em>lien.</em></h2></div><div><p class="lead">Lueur de l’Âtre est imaginé comme un lieu où l’on vient autant pour le moment que pour l’assiette.</p><p>Une cuisine généreuse et raffinée, une atmosphère enveloppante et cette sensation rare de pouvoir prendre son temps. Ici, la chaleur du feu rencontre la précision de la gastronomie.</p></div></div></section>
+<section class="story section dark" id="histoire"><div class="section-label">02 · Notre histoire</div><div class="story-grid"><div class="fire-card" style="--photo:linear-gradient(180deg,rgba(15,10,7,.08),rgba(15,10,7,.68)),url('https://images.pexels.com/photos/8753543/pexels-photo-8753543.jpeg?cs=srgb&dl=pexels-picsfast-8753543.jpg&fm=jpg')"><div class="fire-card-inner"><span>✦</span><strong>LDA</strong><small>Le cœur de la maison</small></div></div><div class="story-copy reveal"><h2>Une lumière qui<br><em>rassemble.</em></h2><p>L’âtre était autrefois le cœur de la maison : un endroit où l’on se retrouvait, où l’on préparait le repas, où les histoires circulaient et où la chaleur faisait oublier le temps.</p><p>Lueur de l’Âtre reprend cette idée et lui donne une expression contemporaine. Le feu devient symbole de passion. La table devient un lieu de rencontre. Le repas devient un souvenir.</p><blockquote>« Une bonne soirée ne se termine pas lorsque la dernière assiette est débarrassée. Elle reste encore un peu avec vous. »</blockquote></div></div></section>
+<section class="cuisine section" id="cuisine"><div class="section-label">03 · La cuisine</div><div class="center-heading reveal"><h2>Du feu à <em>l’assiette.</em></h2><p>Le produit d’abord. La technique ensuite. L’émotion toujours.</p></div><div class="cuisine-photo" style="--photo:linear-gradient(90deg,rgba(31,23,17,.16),rgba(31,23,17,.06)),url('https://images.pexels.com/photos/33033789/pexels-photo-33033789.jpeg?cs=srgb&dl=pexels-szymon-shields-1503561-33033789.jpg&fm=jpg')"></div><div class="pillars reveal"><article><span>01</span><h3>Saison</h3><p>Des produits choisis selon leur fraîcheur, leur origine et leur meilleur moment.</p></article><article><span>02</span><h3>Feu</h3><p>La cuisson, la braise et la chaleur comme signatures sensorielles de la maison.</p></article><article><span>03</span><h3>Précision</h3><p>Des gestes maîtrisés, des sauces travaillées et une présentation élégante sans excès.</p></article></div></section>
+<section class="menu-section section dark" id="menu"><div class="section-label">04 · Le menu</div><div class="center-heading reveal"><h2>Le goût des instants <em>précieux.</em></h2><p id="menuIntroText">Une carte pensée autour du feu, des produits de saison et de la générosité.</p></div><div class="menu-grid" id="publicMenuGrid"></div><div class="allergens"><strong>Allergènes</strong><span>Les allergènes sont affichés à côté de chaque plat. Signalez toujours toute allergie ou intolérance lors de votre réservation.</span></div></section>
+<section class="experience section" id="experience"><div class="section-label">05 · L’expérience</div><div class="center-heading reveal"><h2>Pas seulement un dîner.<br><em>Un moment à retenir.</em></h2></div><div class="timeline"><div class="reveal"><b>01</b><h3>Accueillir</h3><p>Un premier contact chaleureux, simple et personnel.</p></div><div class="reveal"><b>02</b><h3>S’installer</h3><p>La lumière baisse, le feu accompagne la soirée et le temps ralentit.</p></div><div class="reveal"><b>03</b><h3>Savourer</h3><p>Des assiettes pensées pour créer de la surprise, du plaisir et de la conversation.</p></div><div class="reveal"><b>04</b><h3>Se souvenir</h3><p>Le dernier verre, le dernier sourire, puis cette envie de revenir.</p></div></div></section>
+<section class="fire section dark"><div class="fire-image" style="--photo:linear-gradient(90deg,rgba(12,8,6,.28),rgba(12,8,6,.46)),url('https://images.pexels.com/photos/8753543/pexels-photo-8753543.jpeg?cs=srgb&dl=pexels-picsfast-8753543.jpg&fm=jpg')"><div class="flame"><span></span></div></div><div class="fire-copy reveal"><div class="section-label">06 · Le feu</div><h2>Le cœur de<br><em>Lueur.</em></h2><p>Le feu n’est pas un décor. Il représente la chaleur que nous voulons offrir, la passion du métier et cette tradition universelle : se retrouver autour d’une table.</p><p class="signature">Là où la chaleur devient souvenir.</p></div></section>
+<section class="gallery section" id="galerie"><div class="section-label">07 · Galerie</div><div class="center-heading reveal"><h2>Quelques <em>instants.</em></h2></div><div class="gallery-grid"><div class="gallery-tile tile-1" style="--photo:linear-gradient(180deg,transparent 42%,rgba(12,8,6,.78)),url('https://images.pexels.com/photos/37307284/pexels-photo-37307284.jpeg?cs=srgb&dl=pexels-le-salama-2161202416-37307284.jpg&fm=jpg')"><span>La table</span></div><div class="gallery-tile tile-2" style="--photo:linear-gradient(180deg,transparent 32%,rgba(12,8,6,.75)),url('https://images.pexels.com/photos/8753543/pexels-photo-8753543.jpeg?cs=srgb&dl=pexels-picsfast-8753543.jpg&fm=jpg')"><span>Le feu</span></div><div class="gallery-tile tile-3" style="--photo:linear-gradient(180deg,transparent 32%,rgba(12,8,6,.75)),url('https://images.pexels.com/photos/38958593/pexels-photo-38958593.jpeg?cs=srgb&dl=pexels-aabouden-yassir-2163228451-38958593.jpg&fm=jpg')"><span>La cuisine</span></div><div class="gallery-tile tile-4" style="--photo:linear-gradient(180deg,transparent 32%,rgba(12,8,6,.75)),url('https://images.pexels.com/photos/33033789/pexels-photo-33033789.jpeg?cs=srgb&dl=pexels-szymon-shields-1503561-33033789.jpg&fm=jpg')"><span>Le détail</span></div></div></section>
 
-  <main class="main">
-    <header class="topbar">
-      <div><span class="eyebrow">ESPACE PROPRIÉTAIRE</span><h2 id="pageTitle">Vue d’ensemble</h2></div>
-      <div class="user-chip"><span class="status"></span><div><strong>Propriétaire</strong><small id="ownerEmail">owner@lueurdelatre.be</small></div></div>
-    </header>
+</main>
 
-    <section id="page-overview" class="page active">
-      <div class="welcome"><span class="eyebrow">Bonsoir</span><h1>Votre maison, <em>votre vision.</em></h1><p>Gérez Lueur de l’Âtre depuis un seul espace.</p></div>
-      <div class="stats">
-        <div><span>Réservations à venir</span><strong>24</strong><small>+8% cette semaine</small></div>
-        <div><span>Ce soir</span><strong>18</strong><small>tables réservées</small></div>
-        <div><span>Demandes en attente</span><strong id="pendingStat">3</strong><small>à traiter</small></div>
-        <div><span>Menu publié</span><strong>✓</strong><small>dernière mise à jour aujourd’hui</small></div>
-      </div>
-      <div class="two-col">
-        <div class="panel"><div class="panel-head"><h3>Dernières réservations</h3><button data-page-jump="bookings">Tout voir →</button></div><div id="recentBookings" class="booking-list"></div></div>
-        <div class="panel"><div class="panel-head"><h3>Actions rapides</h3></div>
-          <div class="quick-actions">
-            <button data-page-jump="menu">Modifier le menu <span>→</span></button>
-            <button data-page-jump="hours">Changer les horaires <span>→</span></button>
-            <button data-page-jump="photos">Ajouter une photo <span>→</span></button>
-            <button data-page-jump="contact">Modifier les coordonnées <span>→</span></button>
-          </div>
+<section class="reservation-section section" id="reserveren">
+  <div class="section-heading reveal">
+    <span class="eyebrow">Votre table vous attend</span>
+    <h2>Réserver une <em>table</em></h2>
+    <p>Planifiez votre moment chez Lueur de l’Âtre. Pour les groupes, événements privés ou demandes particulières, contactez directement notre équipe.</p>
+  </div>
+
+  <div class="reservation-layout">
+    <div class="reservation-card reveal">
+      <div class="reservation-card-top">
+        <span class="reservation-number">01</span>
+        <div>
+          <h3>Demande de réservation</h3>
+          <p>Nous vous confirmerons votre réservation personnellement.</p>
         </div>
       </div>
-    </section>
 
-    <section id="page-menu" class="page">
-      <div class="page-intro"><div><span class="eyebrow">CONTENU</span><h1>Menu & <em>prix</em></h1><p>Modifiez les plats, descriptions, prix et allergènes visibles sur votre site.</p></div><button class="gold" id="addDish">+ Ajouter un plat</button></div>
-      <div class="filter-row"><span class="filter active">Alles</span><small>Wijzigingen worden rechtstreeks in Supabase opgeslagen en verschijnen daarna op de publieke website.</small></div>
-      <div class="menu-editor" id="menuEditor"></div>
-    </section>
+      <form class="reservation-form" id="reservationForm">
+  <div class="live-booking-bar">
+    <span class="live-dot"></span>
+    <div><strong>Réservation en ligne</strong><small>Disponibilité en temps réel — prête pour votre système de réservation</small></div>
+  </div>
 
-    <section id="page-hours" class="page">
-      <div class="page-intro"><div><span class="eyebrow">SERVICE</span><h1>Horaires <em>d’ouverture</em></h1><p>Gérez les horaires réguliers et les fermetures exceptionnelles.</p></div><button class="gold" id="saveHours">Enregistrer</button></div>
-      <div class="panel hours-editor" id="hoursEditor"></div>
-      <div class="panel special-hours"><div class="panel-head"><h3>Fermetures exceptionnelles</h3><button class="outline" id="addClosure">+ Ajouter</button></div><div id="closures"></div></div>
-    </section>
+  <div class="form-grid two">
+    <label>Date
+      <input name="date" type="date" required>
+    </label>
+    <label>Personnes
+      <select name="guests" required>
+        <option value="">Nombre de personnes</option>
+        <option>1 personne</option><option>2 personnes</option><option>3 personnes</option>
+        <option>4 personnes</option><option>5 personnes</option><option>6 personnes</option>
+        <option>7 personnes</option><option>8 personnes</option><option>9+ personnes</option>
+      </select>
+    </label>
+  </div>
 
-    <section id="page-photos" class="page">
-      <div class="page-intro"><div><span class="eyebrow">IMAGE</span><h1>Photos <em>du restaurant</em></h1><p>Remplacez les images de démonstration par vos propres photos.</p></div><button class="gold" id="addPhoto">+ Ajouter une photo</button></div>
-      <div class="upload-zone" id="uploadZone"><strong>Déposez une photo ici</strong><span>ou choisissez un fichier depuis votre ordinateur</span><button class="outline">Choisir une image</button><input id="photoInput" type="file" accept="image/*" hidden></div>
-      <div class="photo-grid" id="photoGrid"></div>
-    </section>
+  <div class="booking-step">
+    <div class="step-label"><span>02</span><b>Choisissez votre heure</b></div>
+    <div class="time-grid" id="timeGrid">
+      <button type="button" data-time="18:00">18:00</button>
+      <button type="button" data-time="18:30">18:30</button>
+      <button type="button" data-time="19:00">19:00</button>
+      <button type="button" data-time="19:30">19:30</button>
+      <button type="button" data-time="20:00">20:00</button>
+      <button type="button" data-time="20:30">20:30</button>
+      <button type="button" data-time="21:00">21:00</button>
+      <button type="button" data-time="21:30">21:30</button>
+    </div>
+    <input type="hidden" name="time" id="selectedTime" required>
+  </div>
 
-    <section id="page-bookings" class="page">
-      <div class="page-intro"><div><span class="eyebrow">SERVICE</span><h1>Réservations <em>clients</em></h1><p>Consultez, confirmez et gérez les demandes de votre salle.</p></div><button class="gold" id="newBooking">+ Réservation</button></div>
-      <div class="booking-tabs"><button class="active">Aujourd’hui</button><button>À venir</button><button>En attente <b>3</b></button><button>Historique</button></div>
-      <div class="panel"><div id="allBookings" class="admin-bookings"></div></div>
-    </section>
+  <div class="booking-note">
+    <span>✦</span>
+    <p>Les horaires affichés sont une démonstration jusqu’à la connexion de votre système de réservation. Après activation, les créneaux réellement disponibles apparaîtront ici.</p>
+  </div>
 
-    <section id="page-contact" class="page">
-      <div class="page-intro"><div><span class="eyebrow">IDENTITÉ</span><h1>Coordonnées & <em>contact</em></h1><p>Ces informations sont utilisées sur votre site et dans les demandes de réservation.</p></div><button class="gold" id="saveContact">Enregistrer</button></div>
-      <div class="form-panel">
-        <label>Nom du restaurant<input id="restaurantName" value="Lueur de l’Âtre"></label>
-        <label>Slogan<input id="tagline" value="Le goût des instants précieux"></label>
-        <label>Adresse<input id="address" value="Votre adresse · Belgique"></label>
-        <div class="form-row"><label>Téléphone<input id="phone" value="+32 (0)00 00 00 00"></label><label>E-mail<input id="email" value="bonjour@lueurdelatre.be"></label></div>
-        <label>Message d’accueil<textarea id="welcomeText">Là où la chaleur devient souvenir.</textarea></label>
+  <div class="booking-step guest-details">
+    <div class="step-label"><span>03</span><b>Vos coordonnées</b></div>
+    <div class="form-grid two">
+      <label>Prénom<input name="firstName" type="text" autocomplete="given-name" placeholder="Votre prénom" required></label>
+      <label>Nom<input name="lastName" type="text" autocomplete="family-name" placeholder="Votre nom" required></label>
+    </div>
+    <div class="form-grid two">
+      <label>E-mail<input name="email" type="email" autocomplete="email" placeholder="vous@exemple.be" required></label>
+      <label>Téléphone<input name="phone" type="tel" autocomplete="tel" placeholder="+32 ..." required></label>
+    </div>
+  </div>
+
+  <div class="form-grid two">
+    <label>Occasion
+      <select name="occasion">
+        <option>Aucune occasion particulière</option><option>Anniversaire</option>
+        <option>Dîner romantique</option><option>Repas d’affaires</option><option>Fête familiale</option><option>Autre</option>
+      </select>
+    </label>
+    <label>Préférence alimentaire
+      <select name="diet"><option>Aucune</option><option>Végétarien</option><option>Végétalien</option><option>Sans gluten</option><option>Je souhaite préciser</option></select>
+    </label>
+  </div>
+
+  <label>Allergies ou demandes particulières
+    <textarea name="notes" rows="3" placeholder="Allergies, intolérances, anniversaire, chaise enfant…"></textarea>
+  </label>
+
+  <label class="consent"><input type="checkbox" required><span>J’accepte que les informations soient utilisées uniquement pour traiter ma réservation.</span></label>
+
+  <button class="reservation-submit" type="submit"><span>Continuer la réservation</span><span>→</span></button>
+  <p class="form-note">La confirmation définitive dépendra de la disponibilité réelle de la salle.</p>
+  <div class="reservation-success" id="reservationSuccess" hidden></div>
+</form>
+    </div>
+
+    <aside class="reservation-aside reveal">
+      <div class="aside-panel">
+        <span class="reservation-number">02</span>
+        <h3>Une réservation<br><em>sur mesure</em></h3>
+        <p>Vous venez pour un moment important ? Dites-le-nous. Nous aimons préparer les détails qui rendent une soirée mémorable.</p>
+        <div class="aside-rule"></div>
+        <div class="contact-mini">
+          <span>Téléphone</span>
+          <a href="tel:+32000000000">+32 (0)00 00 00 00</a>
+        </div>
+        <div class="contact-mini">
+          <span>E-mail</span>
+          <a href="mailto:bonjour@lueurdelatre.be">bonjour@lueurdelatre.be</a>
+        </div>
       </div>
-    </section>
 
-    <section id="page-settings" class="page">
-      <div class="page-intro"><div><span class="eyebrow">SÉCURITÉ</span><h1>Paramètres <em>propriétaire</em></h1><p>Préparez la connexion sécurisée et les préférences du site.</p></div></div>
-      <div class="settings-grid">
-        <div class="panel"><h3>Compte propriétaire</h3><p>Pour la production, utilisez une authentification Supabase avec votre propre adresse. Ne mettez jamais un mot de passe dans les fichiers du site.</p><div class="security-line"><span>Authentification</span><strong>Supabase Auth</strong></div><div class="security-line"><span>Base de données</span><strong>PostgreSQL</strong></div><div class="security-line"><span>Photos</span><strong>Supabase Storage</strong></div></div>
-        <div class="panel"><h3>Connexion technique</h3><div class="security-line"><span>Supabase</span><strong id="connectionState">Connexion…</strong></div><div class="security-line"><span>URL projet</span><strong id="projectUrlLabel">—</strong></div><p>La connexion est déjà intégrée dans cette version. La clé publishable peut être utilisée dans le navigateur. Ne partagez jamais une clé <code>sb_secret_…</code> ou service-role.</p><button class="outline" id="refreshData">Actualiser les données</button></div>
+      <div class="hours-panel"><span class="eyebrow">Horaires</span><div id="publicHours"></div><small>Horaires affichés depuis votre espace propriétaire.</small></div>
+    </aside>
+  </div>
+</section>
+
+<section class="contact-section section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-copy reveal">
+      <span class="eyebrow">Parlons-nous</span>
+      <h2>Le plaisir commence<br><em>avant votre arrivée.</em></h2>
+      <p>Une question sur le menu, une demande pour un groupe ou l’organisation d’un événement privé ? Notre équipe est à votre écoute.</p>
+      <div class="contact-actions">
+        <a class="contact-action" id="publicPhoneLink" href="tel:+32000000000"><span>01</span><div><small>Téléphone</small><strong id="publicPhone">+32 (0)00 00 00 00</strong></div></a>
+        <a class="contact-action" id="publicEmailLink" href="mailto:bonjour@lueurdelatre.be"><span>02</span><div><small>E-mail</small><strong id="publicEmail">bonjour@lueurdelatre.be</strong></div></a>
+        <div class="contact-action"><span>03</span><div><small>Adresse</small><strong id="publicAddress">Votre adresse · Belgique</strong></div></div>
       </div>
-    </section>
-  </main>
-</div>
+    </div>
+
+    <div class="contact-card reveal">
+      <div class="contact-card-glow"></div>
+      <span class="monogram-small">LDA</span>
+      <span class="eyebrow">Lueur de l’Âtre</span>
+      <h3>Pour les grandes<br><em>occasions</em></h3>
+      <p>Repas privés · Anniversaires · Dîners d’affaires · Célébrations</p>
+      <a class="gold-link" href="mailto:bonjour@lueurdelatre.be?subject=Événement%20privé%20—%20Lueur%20de%20l’Âtre">Parler de votre événement <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="footer-brand"><span class="monogram">LDA</span><strong>Lueur de l’Âtre</strong></div><p>Là où la chaleur devient souvenir.</p><small>© <span id="year"></span> Lueur de l’Âtre · Le goût des instants précieux.</small><div class="credits">Conceptbeelden: Pexels · foto's van Team Picsfast, Le Salama, Szymon Shields en Aabouden Yassir.</div><a href="admin/" class="owner-login-link">Owner login</a>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../config.js"></script>
-<script src="../admin.js"></script>
-</body>
-</html>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body></html>

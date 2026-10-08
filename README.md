@@ -1,30 +1,26 @@
-# Lueur de l’Âtre — V8 Production
+# Lueur de l’Âtre — V9
 
-Deze versie is voorbereid op een echte website met Supabase.
+Deze versie is voorbereid voor GitHub Pages + Supabase.
 
-## Wat werkt
-- Publieke website leest menu, openingsuren, foto's en contactgegevens uit Supabase.
-- Eigenaar logt in via Supabase Auth.
-- Alleen `admin.lueurdelatre@gmail.com` mag CMS-gegevens wijzigen via RLS.
-- Menu, prijzen, beschrijvingen, vegetarisch, allergenen en publicatie worden beheerd vanuit Owner Dashboard.
-- Openingsuren en uitzonderlijke sluitingen worden beheerd vanuit Owner Dashboard.
-- Foto's worden geüpload naar Supabase Storage.
-- Reservatieaanvragen worden rechtstreeks opgeslagen in `reservations`.
-- Status van reservaties kan door de eigenaar worden gewijzigd.
-- Publieke website valt terug op demo-inhoud als Supabase tijdelijk niet bereikbaar is.
+## Bestandsstructuur
+- `index.html` — publieke website
+- `admin/index.html` — eigenaar/admin-dashboard
+- `admin.html` — dezelfde admin als losse pagina (compatibiliteit)
+- `admin.css` / `admin.js` — admin styling en logica
+- `config.js` — Supabase project URL + publishable key
+- `script.js` / `style.css` — publieke website
+- `supabase-production.sql` — productie-RLS/database script
 
-## Eenmalige Supabase stap
-1. Open Supabase → SQL Editor.
-2. Open `supabase-production.sql` uit deze zip.
-3. Run het volledige bestand.
-4. Controleer in Authentication → Users dat `admin.lueurdelatre@gmail.com` bestaat.
-5. Gebruik het wachtwoord van dat account om in te loggen via `/admin/`.
+## GitHub Pages
+Gebruik in GitHub: Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
 
-## Belangrijk
-`config.js` bevat alleen de browser-veilige publishable key. Zet NOOIT een `sb_secret_...` of service-role key in de website.
+Upload de INHOUD van deze map naar de repository-root. De map `admin` moet als map behouden blijven.
 
-## Website publiceren
-Alle bestanden kunnen op een statische host zoals GitHub Pages, Netlify of Vercel worden gezet. De map `admin/` geeft de eigenaar een nette `/admin/` URL.
+Na publicatie:
+- Website: `https://<github-gebruikersnaam>.github.io/<repository>/`
+- Admin: `https://<github-gebruikersnaam>.github.io/<repository>/admin/`
 
-## Domein
-Koppel later `lueurdelatre.be` aan de gekozen host. Supabase blijft de backend voor database, authenticatie en foto's.
+## Supabase
+Voer `supabase-production.sql` uit in Supabase SQL Editor. Gebruik nooit een `sb_secret_...` of service-role key in de browser.
+
+Admin-login: het Supabase-gebruikersaccount dat in `admin.js` als eigenaar is ingesteld.
