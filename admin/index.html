@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lueur de l’Âtre — Owner Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../admin.css">
+</head>
+<body>
+<div id="loginView" class="login-view">
+  <div class="login-card">
+    <div class="login-logo">LDA</div>
+    <span class="eyebrow">OWNER ACCESS</span>
+    <h1>Lueur de l’Âtre</h1>
+    <p>Votre espace privé pour gérer le restaurant.</p>
+    <form id="loginForm">
+      <label>E-mail<input id="loginEmail" type="email" placeholder="votre e-mail" required></label>
+      <label>Mot de passe<input id="loginPassword" type="password" placeholder="••••••••" required></label>
+      <button type="submit">Se connecter <span>→</span></button>
+    </form>
+    <small id="loginHint">Connexion sécurisée via Supabase Auth.</small>
+  </div>
+</div>
+
+<div id="appView" class="app" hidden>
+  <aside class="sidebar">
+    <div class="brand"><span>LDA</span><small>OWNER</small></div>
+    <nav>
+      <button data-page="overview" class="active">⌂ <span>Vue d’ensemble</span></button>
+      <button data-page="menu">☷ <span>Menu & prix</span></button>
+      <button data-page="hours">◷ <span>Ouvertures</span></button>
+      <button data-page="photos">▧ <span>Photos</span></button>
+      <button data-page="bookings">◌ <span>Réservations</span><b id="bookingBadge">3</b></button>
+      <button data-page="contact">◇ <span>Contact</span></button>
+      <button data-page="settings">⚙ <span>Paramètres</span></button>
+    </nav>
+    <button id="logout" class="logout">Déconnexion</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><span class="eyebrow">ESPACE PROPRIÉTAIRE</span><h2 id="pageTitle">Vue d’ensemble</h2></div>
+      <div class="user-chip"><span class="status"></span><div><strong>Propriétaire</strong><small id="ownerEmail">owner@lueurdelatre.be</small></div></div>
+    </header>
+
+    <section id="page-overview" class="page active">
+      <div class="welcome"><span class="eyebrow">Bonsoir</span><h1>Votre maison, <em>votre vision.</em></h1><p>Gérez Lueur de l’Âtre depuis un seul espace.</p></div>
+      <div class="stats">
+        <div><span>Réservations à venir</span><strong>24</strong><small>+8% cette semaine</small></div>
+        <div><span>Ce soir</span><strong>18</strong><small>tables réservées</small></div>
+        <div><span>Demandes en attente</span><strong id="pendingStat">3</strong><small>à traiter</small></div>
+        <div><span>Menu publié</span><strong>✓</strong><small>dernière mise à jour aujourd’hui</small></div>
+      </div>
+      <div class="two-col">
+        <div class="panel"><div class="panel-head"><h3>Dernières réservations</h3><button data-page-jump="bookings">Tout voir →</button></div><div id="recentBookings" class="booking-list"></div></div>
+        <div class="panel"><div class="panel-head"><h3>Actions rapides</h3></div>
+          <div class="quick-actions">
+            <button data-page-jump="menu">Modifier le menu <span>→</span></button>
+            <button data-page-jump="hours">Changer les horaires <span>→</span></button>
+            <button data-page-jump="photos">Ajouter une photo <span>→</span></button>
+            <button data-page-jump="contact">Modifier les coordonnées <span>→</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-menu" class="page">
+      <div class="page-intro"><div><span class="eyebrow">CONTENU</span><h1>Menu & <em>prix</em></h1><p>Modifiez les plats, descriptions, prix et allergènes visibles sur votre site.</p></div><button class="gold" id="addDish">+ Ajouter un plat</button></div>
+      <div class="filter-row"><span class="filter active">Alles</span><small>Wijzigingen worden rechtstreeks in Supabase opgeslagen en verschijnen daarna op de publieke website.</small></div>
+      <div class="menu-editor" id="menuEditor"></div>
+    </section>
+
+    <section id="page-hours" class="page">
+      <div class="page-intro"><div><span class="eyebrow">SERVICE</span><h1>Horaires <em>d’ouverture</em></h1><p>Gérez les horaires réguliers et les fermetures exceptionnelles.</p></div><button class="gold" id="saveHours">Enregistrer</button></div>
+      <div class="panel hours-editor" id="hoursEditor"></div>
+      <div class="panel special-hours"><div class="panel-head"><h3>Fermetures exceptionnelles</h3><button class="outline" id="addClosure">+ Ajouter</button></div><div id="closures"></div></div>
+    </section>
+
+    <section id="page-photos" class="page">
+      <div class="page-intro"><div><span class="eyebrow">IMAGE</span><h1>Photos <em>du restaurant</em></h1><p>Remplacez les images de démonstration par vos propres photos.</p></div><button class="gold" id="addPhoto">+ Ajouter une photo</button></div>
+      <div class="upload-zone" id="uploadZone"><strong>Déposez une photo ici</strong><span>ou choisissez un fichier depuis votre ordinateur</span><button class="outline">Choisir une image</button><input id="photoInput" type="file" accept="image/*" hidden></div>
+      <div class="photo-grid" id="photoGrid"></div>
+    </section>
+
+    <section id="page-bookings" class="page">
+      <div class="page-intro"><div><span class="eyebrow">SERVICE</span><h1>Réservations <em>clients</em></h1><p>Consultez, confirmez et gérez les demandes de votre salle.</p></div><button class="gold" id="newBooking">+ Réservation</button></div>
+      <div class="booking-tabs"><button class="active">Aujourd’hui</button><button>À venir</button><button>En attente <b>3</b></button><button>Historique</button></div>
+      <div class="panel"><div id="allBookings" class="admin-bookings"></div></div>
+    </section>
+
+    <section id="page-contact" class="page">
+      <div class="page-intro"><div><span class="eyebrow">IDENTITÉ</span><h1>Coordonnées & <em>contact</em></h1><p>Ces informations sont utilisées sur votre site et dans les demandes de réservation.</p></div><button class="gold" id="saveContact">Enregistrer</button></div>
+      <div class="form-panel">
+        <label>Nom du restaurant<input id="restaurantName" value="Lueur de l’Âtre"></label>
+        <label>Slogan<input id="tagline" value="Le goût des instants précieux"></label>
+        <label>Adresse<input id="address" value="Votre adresse · Belgique"></label>
+        <div class="form-row"><label>Téléphone<input id="phone" value="+32 (0)00 00 00 00"></label><label>E-mail<input id="email" value="bonjour@lueurdelatre.be"></label></div>
+        <label>Message d’accueil<textarea id="welcomeText">Là où la chaleur devient souvenir.</textarea></label>
+      </div>
+    </section>
+
+    <section id="page-settings" class="page">
+      <div class="page-intro"><div><span class="eyebrow">SÉCURITÉ</span><h1>Paramètres <em>propriétaire</em></h1><p>Préparez la connexion sécurisée et les préférences du site.</p></div></div>
+      <div class="settings-grid">
+        <div class="panel"><h3>Compte propriétaire</h3><p>Pour la production, utilisez une authentification Supabase avec votre propre adresse. Ne mettez jamais un mot de passe dans les fichiers du site.</p><div class="security-line"><span>Authentification</span><strong>Supabase Auth</strong></div><div class="security-line"><span>Base de données</span><strong>PostgreSQL</strong></div><div class="security-line"><span>Photos</span><strong>Supabase Storage</strong></div></div>
+        <div class="panel"><h3>Connexion technique</h3><div class="security-line"><span>Supabase</span><strong id="connectionState">Connexion…</strong></div><div class="security-line"><span>URL projet</span><strong id="projectUrlLabel">—</strong></div><p>La connexion est déjà intégrée dans cette version. La clé publishable peut être utilisée dans le navigateur. Ne partagez jamais une clé <code>sb_secret_…</code> ou service-role.</p><button class="outline" id="refreshData">Actualiser les données</button></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../admin.js"></script>
+</body>
+</html>
